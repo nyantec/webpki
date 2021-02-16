@@ -102,7 +102,7 @@ pub(crate) fn parse_cert_internal<'a>(
         der::nested_mut(
             tbs,
             der::Tag::ContextSpecificConstructed3,
-            Error::BadDER,
+            Error::MissingOrMalformedExtensions,
             |tagged| {
                 der::nested_of_mut(
                     tagged,
