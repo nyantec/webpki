@@ -42,7 +42,7 @@ pub fn cert_der_as_trust_anchor(cert_der: &[u8]) -> Result<TrustAnchor, Error> {
         possibly_invalid_certificate_serial_number,
     ) {
         Ok(cert) => Ok(trust_anchor_from_cert(cert)),
-        Err(Error::BadDER) => parse_cert_v1(cert_der).or(Err(Error::BadDER)),
+        Err(Error::UnsupportedCertVersion) => parse_cert_v1(cert_der).or(Err(Error::BadDER)),
         Err(err) => Err(err),
     }
 }
