@@ -239,6 +239,13 @@ impl<'a> EndEntityCert<'a> {
             untrusted::Input::from(signature),
         )
     }
+
+    /// Get the raw subject data from the underlying cert struct
+    pub fn get_subject(
+        &self,
+    ) -> untrusted::Input {
+        self.inner.subject
+    }
 }
 
 /// A trust anchor (a.k.a. root CA).
