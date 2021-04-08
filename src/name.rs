@@ -173,8 +173,8 @@ pub fn check_name_constraints(
         }
         let subtrees = der::nested(inner, subtrees_tag, Error::BadDER, |tagged| {
             der::expect_tag_and_get_value(tagged, der::Tag::Sequence)
-        })?;
-        Ok(Some(subtrees))
+        });
+        Ok(subtrees.ok())
     }
 
     let permitted_subtrees = parse_subtrees(input, der::Tag::ContextSpecificConstructed0)?;
